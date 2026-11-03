@@ -218,3 +218,41 @@ button:active {
     background: #e2e8f0;
   }
 }
+
+
+.team-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  padding: 28px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.card-item {
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.card-item h4 {
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.card-item p {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}

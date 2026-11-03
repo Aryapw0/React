@@ -4,6 +4,7 @@ function ProfileCard() {
   const [isOnline, setOnline] = useState(false);
   const [tampil, setTampil] = useState(false);
   const ref = useRef(null);
+  const [nama, setNama] = useState('');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,6 +26,19 @@ function ProfileCard() {
         <button onClick={() => setOnline(!isOnline)}>
           ganti status
         </button>
+
+          <div className="bagian">
+            <h1>halooo!</h1>
+            <input
+              type="text"
+              placeholder="ketik Profesi anda..."
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
+              className="input-teks"
+            />
+            <h2>Profesi, {nama || ''}</h2>
+          </div>
+
       </div>
     </section>
   );

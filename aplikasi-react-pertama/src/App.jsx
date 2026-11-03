@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import Dragon from './Dragon';
 import ProfileCard from './Component/ProfileCard';
+import TeamDirectory from './Component/TeamDirectory';
 
 function App() {
   const [hitung, setHitung] = useState(0);
@@ -34,13 +35,14 @@ function App() {
               onChange={(e) => setNama(e.target.value)}
               className="input-teks"
             />
-            <h2>halo, {nama || 'Tamu'}</h2>
+            <h2>nama, {nama || ''}</h2>
           </div>
         </div>
       </section>
 
       {/* LAYAR 2: kartu profil (di dalam komponennya sudah ada <section className="layar">) */}
       <ProfileCard />
+      <TeamDirectory/>
     </>
   );
 }
