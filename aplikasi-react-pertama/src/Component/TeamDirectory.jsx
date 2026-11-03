@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import fadein from '../fadein';
 const members= [
     {id: 1, name: 'Arya', role: 'Frontend Dev', status: 'Online'},
     {id: 2, name: 'Fauzi', role: 'UI/UX Designer', status: 'Offline'},
@@ -7,13 +8,14 @@ const members= [
 
 function TeamDirectory() {
     const [filterOnlne, setFilterOnline] = useState(false);
+    const [ref, tampil] = fadein();
     const displayedMembers = filterOnlne
         ? members.filter((item) => item.status === 'Online')
         : members;
 
     return (
-        <section className="layar">
-        <div className="team-container">
+        <section className="layar" ref={ref}>
+        <div className={`team-container ${tampil ? 'tampil' : ''}`}>
             <h2>Project Team Directory</h2>
             <button onClick={() => setFilterOnline(!filterOnlne)}>{filterOnlne ? 'Show All' : 'Filter Online Only'}</button>
             <div className='team-list'>

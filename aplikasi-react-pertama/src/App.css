@@ -231,6 +231,14 @@ button:active {
   border: 1px solid #e2e8f0;
   border-radius: 20px;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.team-container.tampil {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .team-list {
@@ -248,7 +256,7 @@ button:active {
 }
 
 .card-item h4 {
-  color: #0f172a;
+  
   margin-bottom: 4px;
 }
 

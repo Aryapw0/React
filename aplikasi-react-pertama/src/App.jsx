@@ -12,7 +12,7 @@ function App() {
     <>
       <Dragon />
 
-      {/* LAYAR 1: kartu utama */}
+      {/* LAYAR 1: kartu utama */} 
       <section className="layar">
         <div className="container">
           <div className="bagian">
