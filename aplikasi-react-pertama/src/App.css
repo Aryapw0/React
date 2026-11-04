@@ -42,7 +42,9 @@ body {
 
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .card-profile.tampil {
@@ -91,7 +93,7 @@ h2 {
   font-weight: 600;
   color: #334155;
   margin: 16px 0;
-  overflow-wrap: anywhere;   /* nama panjang tidak merusak layout */
+  overflow-wrap: anywhere; /* nama panjang tidak merusak layout */
 }
 
 p {
@@ -139,14 +141,16 @@ button:active {
   max-width: 400px;
   min-height: 44px;
   padding: 12px 16px;
-  font-size: 1rem;           /* minimal 16px agar iPhone tidak zoom otomatis */
+  font-size: 1rem; /* minimal 16px agar iPhone tidak zoom otomatis */
   text-align: center;
   color: #0f172a;
   background: #fff;
   border: 1px solid #cbd5e1;
   border-radius: 12px;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .input-teks:focus {
@@ -161,7 +165,7 @@ button:active {
   }
 
   .container {
-    max-width: 320px;          /* kartu lebih ramping */
+    max-width: 320px; /* kartu lebih ramping */
     padding: 24px 16px;
   }
 
@@ -190,7 +194,7 @@ button:active {
   .input-teks {
     max-width: 240px;
     padding: 8px 12px;
-    font-size: 1rem;           /* jangan lebih kecil dari 16px agar tidak zoom otomatis di iPhone */
+    font-size: 1rem; /* jangan lebih kecil dari 16px agar tidak zoom otomatis di iPhone */
   }
 
   .garis {
@@ -219,12 +223,11 @@ button:active {
   }
 }
 
-
 .team-container {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 520px;
+  max-width: 1040px;
   padding: 28px 20px;
   text-align: center;
   background: rgba(255, 255, 255, 0.9);
@@ -233,7 +236,9 @@ button:active {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .team-container.tampil {
@@ -241,26 +246,255 @@ button:active {
   transform: translateY(0);
 }
 
-.team-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.card-item {
-  padding: 14px;
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  min-height: 44px;
+  margin: 8px 0 4px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  text-align: center;
+  color: #0f172a;
   background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
-.card-item h4 {
-  
+.search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.empty-state {
+  margin-top: 20px;
+  padding: 16px;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.directory-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+}
+.directory-title {
+  font-size: 28px;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 500px;
+  margin: 0 auto 24px auto;
+}
+
+.stat-box {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0284c7;
+  line-height: 1.1;
+}
+
+.stat-num.online {
+  color: #16a34a;
+}
+
+.stat-num.offline {
+  color: #64748b;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 18px;
+  order: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 24px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.card-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
   margin-bottom: 4px;
 }
 
-.card-item p {
-  margin-bottom: 6px;
+.card-role {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.badge-online {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.badge-offline {
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.btn-status-toggle {
+  margin-top: 14px;
+  padding: 8px 14px;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.card-badges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.badge-stars {
+  background: #fef3c7;
+  color: #b45309;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-star {
+  margin-top: 14px;
+  padding: 8px 14px;
+  border: 1px solid #f59e0b;
+  background: #fffbeb;
+  color: #b45309;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  background: #fffbeb;
+  border: 2px dashed #f59e0b;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: #b45309;
+  font-weight: 600;
+}
+
+.btn-star,
+.btn-status-toggle {
+  min-height: auto;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-star:hover {
+  background: #fde68a;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-status-toggle:hover {
+  background: #1e293b;
+  transform: none;
+  box-shadow: none;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.btn-filter {
+  min-height: auto;
+  padding: 8px 18px;
   font-size: 0.9rem;
+  color: #475569;
+  background: #fff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.btn-filter:hover {
+  background: #f1f5f9;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-filter.aktif {
+  color: #fff;
+  background: #0f172a;
+  border-color: #0f172a;
+}
+
+.btn-filter.aktif:hover {
+  background: #1e293b;
 }

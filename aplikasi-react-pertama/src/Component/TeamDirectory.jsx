@@ -1,39 +1,138 @@
-import { useState } from 'react';
-import fadein from '../fadein';
-import TeamCard from './TeamCard';
-const members= [
-    {id: 1, name: 'Arya', role: 'Frontend Dev', status: 'Online'},
-    {id: 2, name: 'Fauzi', role: 'UI/UX Designer', status: 'Offline'},
-    {id: 3, name: 'Bambang', role: 'Backend Engineer', status: 'Online'}
-];
+import { useState } from "react";
+import TeamCard from "./TeamCard";
+import fadein from "../fadein";
 
 function TeamDirectory() {
-    const [filterOnlne, setFilterOnline] = useState(false);
-    const [ref, tampil] = fadein();
-    const displayedMembers = filterOnlne
-        ? members.filter((item) => item.status === 'Online')
-        : members;
+  const [members, setMembers] = useState([
+    {
+      id: 1,
+      name: "Arya",
+      role: "Frontend Dev",
+      status: "Online",
+      stars: 4,
+      avatar: "https://i.pravatar.cc/150?u=41",
+    },
+    {
+      id: 2,
+      name: "Fauzi",
+      role: "UI/UX Designer",
+      status: "Offline",
+      stars: 2,
+      avatar: "https://i.pravatar.cc/150?u=2",
+    },
+    {
+      id: 3,
+      name: "Bambang",
+      role: "Backend Engineer",
+      status: "Online",
+      stars: 3,
+      avatar: "https://i.pravatar.cc/150?u=53",
+    },
+  ]);
 
-    return (
-        <section className="layar" ref={ref}>
-        <div className={`team-container ${tampil ? 'tampil' : ''}`}>
-            <h2>Project Team Directory</h2>
-            <button onClick={() => setFilterOnline(!filterOnlne)}>{filterOnlne ? 'Show All' : 'Filter Online Only'}</button>
-            <div className='team-list'>
-                {displayedMembers.map((member) => (
-                        <div key={member.id} className="card-item">
-                        <h4>{member.name}</h4>
-                        <p>Role: {member.role}</p>
-                        <span style={{ color: member.status == 'Online' ? '#16a34a' : '#64748b'}}>
-                           • {member.status}
-                        </span>
-                    </div>
-                ))}
-            </div>
-        </div>
-        </section>
+  // 1. State untuk kata kunci pencarian & filter
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("Semua");
+  const [ref, tampil] = fadein();
+
+  const handleToggleStatus = (id) => {
+    setMembers((prevMembers) =>
+      prevMembers.map((member) =>
+        member.id === id
+          ? {
+              ...member,
+              status: member.status === "Online" ? "Offline" : "Online",
+            }
+          : member,
+      ),
     );
+  };
 
+  const handleAddStar = (id) => {
+    setMembers((prevMembers) =>
+      prevMembers.map((member) =>
+        member.id === id ? { ...member, stars: member.stars + 1 } : member,
+      ),
+    );
+  };
+
+  const filteredMembers = members.filter((m) => {
+    const cocokNama = m.name
+      .toLowerCase()
+      .includes(searchTerm.trim().toLowerCase());
+    const cocokStatus = filterStatus === "Semua" || m.status === filterStatus;
+    return cocokNama && cocokStatus;
+  });
+
+  const totalMembers = members.length;
+  const onlineCount = members.filter((m) => m.status === "Online").length;
+  const offlineCount = totalMembers - onlineCount;
+
+  return (
+    <section className="layar" ref={ref}>
+      <div className={`team-container ${tampil ? "tampil" : ""}`}>
+        <div className="directory-container">
+          <h2 className="directory-title">Daftar Anggota Tim Developer</h2>
+
+          <div className="stats-bar">
+            <div className="stat-box">
+              <div className="stat-num">{totalMembers}</div>
+              <div className="stat-label">Total Members</div>
+            </div>
+
+            <div className="stat-box">
+              <div className="stat-num online">{onlineCount}</div>
+              <div className="stat-label">Online</div>
+            </div>
+
+            <div className="stat-box">
+              <div className="stat-num offline">{offlineCount}</div>
+              <div className="stat-label">Offline</div>
+            </div>
+          </div>
+
+          <input
+            type="text"
+            placeholder="Cari nama anggota tim..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+
+          <div className="filter-bar">
+            {["Semua", "Online", "Offline"].map((opsi) => (
+              <button
+                key={opsi}
+                className={`btn-filter ${filterStatus === opsi ? "aktif" : ""}`}
+                onClick={() => setFilterStatus(opsi)}
+              >
+                {opsi}
+              </button>
+            ))}
+          </div>
+
+          {filteredMembers.length === 0 ? (
+            <div className="empty-state">
+              ⚠️ Tidak ada anggota tim yang cocok dengan pencarian
+              {searchTerm && <> "{searchTerm}"</>}
+              {filterStatus !== "Semua" && <> berstatus {filterStatus}</>}.
+            </div>
+          ) : (
+            <div className="team-grid">
+              {filteredMembers.map((member) => (
+                <TeamCard
+                  key={member.id}
+                  {...member}
+                  onToggleStatus={handleToggleStatus}
+                  onAddStar={handleAddStar}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default TeamDirectory
+export default TeamDirectory;
