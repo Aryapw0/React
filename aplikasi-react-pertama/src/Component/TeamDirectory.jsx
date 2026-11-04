@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import fadein from '../fadein';
+import TeamCard from './TeamCard';
 const members= [
     {id: 1, name: 'Arya', role: 'Frontend Dev', status: 'Online'},
     {id: 2, name: 'Fauzi', role: 'UI/UX Designer', status: 'Offline'},
