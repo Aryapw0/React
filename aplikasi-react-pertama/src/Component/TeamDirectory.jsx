@@ -2,33 +2,9 @@ import { useState } from "react";
 import TeamCard from "./TeamCard";
 import fadein from "../fadein";
 
-function TeamDirectory() {
-  const [members, setMembers] = useState([
-    {
-      id: 1,
-      name: "Arya",
-      role: "Frontend Dev",
-      status: "Online",
-      stars: 4,
-      avatar: "https://i.pravatar.cc/150?u=41",
-    },
-    {
-      id: 2,
-      name: "Fauzi",
-      role: "UI/UX Designer",
-      status: "Offline",
-      stars: 2,
-      avatar: "https://i.pravatar.cc/150?u=2",
-    },
-    {
-      id: 3,
-      name: "Bambang",
-      role: "Backend Engineer",
-      status: "Online",
-      stars: 3,
-      avatar: "https://i.pravatar.cc/150?u=53",
-    },
-  ]);
+   function TeamDirectory({ members, setMembers }) {
+   
+  
 
   // 1. State untuk kata kunci pencarian & filter
   const [searchTerm, setSearchTerm] = useState("");

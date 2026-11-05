@@ -1,4 +1,4 @@
-function TeamCard({ id, name, role, avatar, status, stars, onToggleStatus, onAddStar }) {
+function TeamCard({ id, name, role, avatar, status, stars, onToggleStatus, onAddStar, bio }) {
   const isOnline = status === 'Online';
 
   return (
@@ -7,6 +7,7 @@ function TeamCard({ id, name, role, avatar, status, stars, onToggleStatus, onAdd
 
       <div className="card-info">
         <h3 className="card-name">{name}</h3>
+        <h3 className="card-bio">{bio}</h3>
         <p className="card-role">{role}</p>
 
         <div className="card-badges">

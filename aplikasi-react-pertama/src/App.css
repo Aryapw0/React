@@ -371,6 +371,12 @@ button:active {
   margin-bottom: 4px;
 }
 
+.card-bio {
+  font-size: 15px;
+  color: #64748b;
+}
+
+
 .card-role {
   font-size: 15px;
   color: #64748b;
