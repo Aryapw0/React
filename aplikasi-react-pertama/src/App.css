@@ -1,3 +1,5 @@
+@import './Component/AddMember.css';
+
 /* RESET */
 * {
   margin: 0;
@@ -237,8 +239,8 @@ button:active {
   opacity: 0;
   transform: translateY(50px);
   transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+  opacity 0.6s ease,
+  transform 0.6s ease;
 }
 
 .team-container.tampil {
@@ -504,3 +506,316 @@ button:active {
 .btn-filter.aktif:hover {
   background: #1e293b;
 }
+
+/* ===== TEMA BERSIH & MODERN ===== */
+:root {
+  --aksen: #2563eb;
+  --aksen-gelap: #1d4ed8;
+  --teks: #0f172a;
+  --teks-redup: #64748b;
+  --garis: #e2e8f0;
+  --kartu: rgba(255, 255, 255, 0.82);
+  --radius: 16px;
+  --bayangan: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--teks);
+  background: #f8fafc;   /* menggantikan gradien biru */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Kartu: putih lembut, garis tipis, bayangan halus */
+.container,
+.team-container,
+.card-profile {
+  background: var(--kartu);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: var(--bayangan);
+}
+
+.layar-berita {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: clamp(12px, 4vw, 24px);
+}
+
+.news-container {
+  width: 100%;
+  max-width: 1040px;
+  padding: 28px 20px;
+  background: var(--kartu);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: var(--bayangan);
+}
+
+
+/* Teks */
+h1, h2, h3, h4 {
+  color: var(--teks);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(1.4rem, 4.5vw, 1.9rem); }
+h2 { font-size: clamp(1.05rem, 3vw, 1.3rem); color: #334155; }
+
+p { color: var(--teks-redup); }
+
+.directory-title {
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  margin-bottom: 20px;
+}
+
+/* Tombol utama: datar, warna solid */
+button {
+  font-family: inherit;
+  background: var(--aksen);
+  box-shadow: none;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+button:hover {
+  background: var(--aksen-gelap);
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Input */
+.input-teks,
+.search-input {
+  font-family: inherit;
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.input-teks:focus,
+.search-input:focus {
+  border-color: var(--aksen);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Kotak statistik */
+.stat-box {
+  background: #fff;
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.stat-num { color: var(--aksen); }
+.stat-num.online { color: #16a34a; }
+.stat-num.offline { color: var(--teks-redup); }
+
+/* Kartu anggota */
+.team-card {
+  background: #fff;
+  border: 1px solid var(--garis);
+  border-radius: 14px;
+  box-shadow: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.card-avatar {
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--garis);
+}
+
+.card-name { font-size: 1.05rem; font-weight: 600; }
+.card-role { font-size: 0.85rem; }
+
+/* Lencana */
+.badge-online  { background: #dcfce7; color: #15803d; }
+.badge-offline { background: #f1f5f9; color: var(--teks-redup); }
+.badge-stars   { background: #fef3c7; color: #b45309; }
+
+/* Tombol di dalam kartu */
+.btn-status-toggle {
+  background: var(--teks);
+  border-radius: 8px;
+}
+.btn-status-toggle:hover { background: #1e293b; }
+
+.btn-star {
+  background: #fff;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+}
+.btn-star:hover { background: #fffbeb; }
+
+/* Tombol filter */
+.btn-filter {
+  background: #fff;
+  color: var(--teks-redup);
+  border: 1px solid var(--garis);
+}
+.btn-filter:hover { background: #f1f5f9; }
+.btn-filter.aktif {
+  background: var(--teks);
+  color: #fff;
+  border-color: var(--teks);
+}
+
+/* Garis pemisah dan pesan kosong */
+.garis { border-top: 1px solid var(--garis); }
+
+.empty-state {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  color: var(--teks-redup);
+}
+
+.dragon-layer svg {
+  filter: grayscale(100%);
+  opacity: 0.55;
+}
+
+/* ===== TAB DAN BERITA ===== */
+.app-layout {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.main-header { text-align: center; }
+
+.tab-bar {
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 6px;
+  background: #e2e8f0;
+  border-radius: 12px;
+}
+
+.tab-btn {
+  padding: 10px 22px;
+  color: #64748b;
+  background: transparent;
+  border-radius: 8px;
+}
+.tab-btn:hover { background: rgba(255, 255, 255, 0.6); transform: none; }
+.tab-btn.active { color: #2563eb; background: #fff; }
+
+.news-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.btn-refresh:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.spinner-box { text-align: center; padding: 48px; }
+.css-spinner {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-banner {
+  padding: 20px;
+  text-align: center;
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  border-radius: 12px;
+}
+.error-banner button { margin-top: 12px; background: #dc2626; }
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
+}
+.news-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+
+.news-thumb-wrapper { position: relative; height: 180px; }
+.news-thumb { width: 100%; height: 100%; object-fit: cover; }
+.news-category-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(37, 99, 235, 0.9);
+  border-radius: 6px;
+}
+
+.news-body { display: flex; flex-direction: column; flex: 1; padding: 20px; text-align: left; }
+.news-headline { margin-bottom: 12px; font-size: 1rem; line-height: 1.4; }
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+.news-link { color: #2563eb; font-weight: 600; text-decoration: none; }
+
+.source-switch {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.source-btn {
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: #64748b;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.source-btn:hover { background: rgba(255, 255, 255, 0.6); transform: none; }
+.source-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.source-btn.active {color: #fff; background: #2563eb; }
+.source-btn.active.cnn {  background: #dc2626;}

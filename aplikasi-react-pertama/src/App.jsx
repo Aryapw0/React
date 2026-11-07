@@ -6,9 +6,11 @@ import TeamDirectory from "./Component/TeamDirectory";
 import AddMemberForm from "./Component/AddMember";
 import "./Component/AddMember.css";
 
+
 function App() {
   const [hitung, setHitung] = useState(0);
   const [nama, setNama] = useState("");
+  const [activeTab, setActiveTab] = useState('team');
   const handleAddMember = (member) => {
     setMembers((prev) => [
       ...prev,
@@ -34,10 +36,8 @@ function App() {
 
   return (
     <>
-      <Dragon />
-
       {/* LAYAR 1: kartu utama */}
-      <section className="layar">
+		   <section className="layar">
         <div className="container">
           <div className="bagian">
             <h1>hy, nama saya arya</h1>
@@ -63,13 +63,16 @@ function App() {
           </div>
         </div>
       </section>
-
       {/* LAYAR 2: kartu profil (di dalam komponennya sudah ada <section className="layar">) */}
       <ProfileCard />
       <AddMemberForm onAddMember={handleAddMember} />
       <TeamDirectory members={members} setMembers={setMembers} />
+
+
+      <Dragon />
     </>
   );
+  
 }
 
 export default App;

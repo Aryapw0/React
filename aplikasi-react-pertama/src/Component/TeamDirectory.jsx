@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TeamCard from "./TeamCard";
 import fadein from "../fadein";
+import NewsFeed from "./Newsfeed";
 
    function TeamDirectory({ members, setMembers }) {
    
@@ -10,6 +11,7 @@ import fadein from "../fadein";
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("Semua");
   const [ref, tampil] = fadein();
+  const [bagian, setBagian] = useState('anggota'); 
 
   const handleToggleStatus = (id) => {
     setMembers((prevMembers) =>
@@ -45,8 +47,25 @@ import fadein from "../fadein";
   const offlineCount = totalMembers - onlineCount;
 
   return (
-    <section className="layar" ref={ref}>
-      <div className={`team-container ${tampil ? "tampil" : ""}`}>
+  <section className="layar" ref={ref}>
+    <div className={`team-container ${tampil ? 'tampil' : ''}`}>
+
+      <div className="tab-bar">
+        <button
+          className={`tab-btn ${bagian === 'anggota' ? 'active' : ''}`}
+          onClick={() => setBagian('anggota')}
+        >
+          Anggota tim
+        </button>
+        <button
+          className={`tab-btn ${bagian === 'berita' ? 'active' : ''}`}
+          onClick={() => setBagian('berita')}
+        >
+          Berita terkini
+        </button>
+      </div>
+
+      {bagian === 'anggota' ? (
         <div className="directory-container">
           <h2 className="directory-title">Daftar Anggota Tim Developer</h2>
 
@@ -76,10 +95,10 @@ import fadein from "../fadein";
           />
 
           <div className="filter-bar">
-            {["Semua", "Online", "Offline"].map((opsi) => (
+            {['Semua', 'Online', 'Offline'].map((opsi) => (
               <button
                 key={opsi}
-                className={`btn-filter ${filterStatus === opsi ? "aktif" : ""}`}
+                className={`btn-filter ${filterStatus === opsi ? 'aktif' : ''}`}
                 onClick={() => setFilterStatus(opsi)}
               >
                 {opsi}
@@ -91,7 +110,7 @@ import fadein from "../fadein";
             <div className="empty-state">
               ⚠️ Tidak ada anggota tim yang cocok dengan pencarian
               {searchTerm && <> "{searchTerm}"</>}
-              {filterStatus !== "Semua" && <> berstatus {filterStatus}</>}.
+              {filterStatus !== 'Semua' && <> berstatus {filterStatus}</>}.
             </div>
           ) : (
             <div className="team-grid">
@@ -106,9 +125,13 @@ import fadein from "../fadein";
             </div>
           )}
         </div>
-      </div>
+      ) : (
+        <NewsFeed />
+      )}
+
+    </div>
     </section>
-  );
+    );
 }
 
 export default TeamDirectory;

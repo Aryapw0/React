@@ -5,6 +5,9 @@ export default function fadein(threshold = 0.3) {
   const [tampil, setTampil] = useState(false);
 
   useEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      
     const observer = new IntersectionObserver(
       ([entry]) => setTampil(entry.isIntersecting),
       { threshold }

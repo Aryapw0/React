@@ -5,8 +5,19 @@
     padding: 20px 24px;
     margin-bottom: 24px;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-     position: relative;
-     z-index: 10;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.add-member-form.tampil {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .form-title {
@@ -35,7 +46,7 @@
 .form-group-label {
     font-size: 13px;
     font-weight: 600;
-    color: #334155;
+    color: #eeeeee;
 }
 
 .form-group input, .form-group select, .form-group textarea {
@@ -69,6 +80,6 @@
 .card-bin {
     font-size: 13px;
     font-style: italic;
-    color: #6474bb;
+    color: #0e32d6;
     margin: 4px 0 10px 0;
 }

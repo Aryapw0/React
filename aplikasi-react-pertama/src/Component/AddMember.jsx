@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { useState } from "react";
+import fadein from "../fadein";
+import './AddMember.css';
 
 const memberSchema = z.object({
   name: z.string().min(3, "Nama lengkap minimal 3 karakter"),
@@ -11,6 +13,7 @@ const memberSchema = z.object({
 function AddMemberForm({ onAddMember }) {
   const [formData, setFormData] = useState({ name: "", email: "", role: "", bio: "" });
   const [errors, setErrors] = useState({});
+  const [ref, tampil] = fadein();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,9 +38,11 @@ function AddMemberForm({ onAddMember }) {
   };
 
   return (
-    <form className="add-member-form" onSubmit={handleSubmit}>
+    <form
+     ref={ref}
+    className={`add-member-form ${tampil ? 'tampil' : ''}`}
+      onSubmit={handleSubmit}>
       <h3 className="form-title">Tambah Anggota Tim</h3>
-      <div className="form-row">
         <div className="form-group">
           <label>Nama Lengkap</label>
           <input
@@ -91,7 +96,6 @@ function AddMemberForm({ onAddMember }) {
         </div>
 
         <button type="submit" className="btn-submit">+ Tambah Anggota</button>
-      </div>
     </form>
   );
 }
