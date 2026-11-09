@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+
+
 function TeamCard({ id, name, role, avatar, status, stars, onToggleStatus, onAddStar, bio }) {
   const isOnline = status === 'Online';
 
@@ -25,6 +28,12 @@ function TeamCard({ id, name, role, avatar, status, stars, onToggleStatus, onAdd
             Ubah ke {isOnline ? 'Offline' : 'Online'}
           </button>
         </div>
+
+        {
+          <Link to={`/member/${id}`} className="btn-view-profile">
+            Lihat profil detail →
+          </Link>
+        }
       </div>
     </div>
   );

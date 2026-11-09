@@ -819,3 +819,119 @@ button:active {
 .source-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .source-btn.active {color: #fff; background: #2563eb; }
 .source-btn.active.cnn {  background: #dc2626;}
+
+/* ===== ROUTING ===== */
+.navbar-container {
+  position: sticky;
+  top: 12px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background: var(--kartu);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: var(--bayangan);
+}
+.navbar-brand { font-weight: 600; color: var(--teks); }
+.navbar-menu { display: flex; gap: 8px; }
+
+.nav-link {
+  padding: 6px 14px;
+  color: var(--teks-redup);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.nav-link:hover { background: #f1f5f9; }
+.nav-link.active { color: var(--aksen); background: #eff6ff; font-weight: 600; }
+
+.badge-count {
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  background: #f1f5f9;
+  border-radius: 20px;
+}
+
+/* Kartu pembungkus halaman (berita, detail, 404) */
+.page-card {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 20px;
+  background: var(--kartu);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: var(--bayangan);
+}
+
+/* Tautan profil di TeamCard */
+.btn-view-profile {
+  display: block;
+  margin-top: 10px;
+  padding: 7px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: var(--aksen);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+}
+.btn-view-profile:hover { background: #dbeafe; }
+
+/* Halaman detail */
+.profile-detail-container { max-width: 520px; text-align: center; }
+.btn-nav-back {
+  display: block;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  color: var(--aksen);
+  background: transparent;
+  border: 1px solid var(--garis);
+}
+.btn-nav-back:hover { background: #f1f5f9; transform: none; }
+.avatar-large {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  border: 3px solid #3b82f6;
+}
+.profile-role { margin: 4px 0 12px; }
+.badge-on  { padding: 4px 12px; font-size: 0.8rem; color: #15803d; background: #dcfce7; border-radius: 12px; }
+.badge-off { padding: 4px 12px; font-size: 0.8rem; color: #64748b; background: #f1f5f9; border-radius: 12px; }
+.profile-email { margin: 14px 0 6px; color: #0284c7; font-weight: 500; }
+.profile-bio { margin-bottom: 14px; font-style: italic; }
+.profile-stars {
+  display: inline-block;
+  padding: 6px 14px;
+  font-weight: 600;
+  color: #b45309;
+  background: #fef3c7;
+  border-radius: 20px;
+}
+
+/* 404 */
+.not-found-container { text-align: center; padding: 48px 20px; }
+.not-found-code { font-size: 80px; font-weight: 800; line-height: 1; color: #ef4444; }
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  color: #fff;
+  background: var(--aksen);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}

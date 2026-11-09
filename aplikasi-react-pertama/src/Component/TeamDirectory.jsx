@@ -7,12 +7,13 @@ import NewsFeed from "./Newsfeed";
    
   
 
-  // 1. State untuk kata kunci pencarian & filter
+  // 1. State untuk kata kunci pencarian & filter, tidak pindah ke teampage
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("Semua");
   const [ref, tampil] = fadein();
   const [bagian, setBagian] = useState('anggota'); 
 
+  //tidak pindah ke teampage
   const handleToggleStatus = (id) => {
     setMembers((prevMembers) =>
       prevMembers.map((member) =>
@@ -26,6 +27,7 @@ import NewsFeed from "./Newsfeed";
     );
   };
 
+  // tidak pindah ke teampage
   const handleAddStar = (id) => {
     setMembers((prevMembers) =>
       prevMembers.map((member) =>
@@ -34,6 +36,7 @@ import NewsFeed from "./Newsfeed";
     );
   };
 
+  // tidak pindah ke teampage
   const filteredMembers = members.filter((m) => {
     const cocokNama = m.name
       .toLowerCase()
@@ -42,6 +45,7 @@ import NewsFeed from "./Newsfeed";
     return cocokNama && cocokStatus;
   });
 
+  //tidak pindah ke teampage
   const totalMembers = members.length;
   const onlineCount = members.filter((m) => m.status === "Online").length;
   const offlineCount = totalMembers - onlineCount;
