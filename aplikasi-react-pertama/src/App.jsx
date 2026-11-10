@@ -1,15 +1,15 @@
 import "./App.css";
 import "./Component/AddMember.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Dragon from "./Dragon";
 import ProfileCard from "./Component/ProfileCard";
 import Navbar from "./Component/Navbar";
-import TeamPage from "./Pages/TeamPage";
-import NewsPage from "./Pages/NewsPage";
-import MemberDetailPage from "./Pages/MemberDetailPage";
-import NotFoundPage from "./Pages/NotFoundPage";
+import TeamPage from "./pages/TeamPage";
+import NewsPage from "./pages/NewsPage";
+import MemberDetailPage from "./pages/MemberDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const [hitung, setHitung] = useState(0);
@@ -20,6 +20,24 @@ function App() {
     { id: 2, name: "Fauzi", role: "UI/UX Designer", status: "Offline", stars: 2, avatar: "https://i.pravatar.cc/150?u=2", bio: "halo saya UI/UX Designer" },
     { id: 3, name: "Bambang", role: "Backend Engineer", status: "Online", stars: 3, avatar: "https://i.pravatar.cc/150?u=53", bio: "halo saya Backend Engineer" },
   ]);
+
+  const [backendStatus, setBackendStatus] = useState("Memeriksa...");
+
+useEffect(() => {
+  fetch("http://localhost:5000/api/health")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Backend tidak merespons");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      setBackendStatus(data.status);
+    })
+    .catch(() => {
+      setBackendStatus("Tidak terhubung");
+    });
+}, []);
 
   const handleAddMember = (newMember) => {
     const id = Date.now();
@@ -65,6 +83,8 @@ function App() {
 
                 <section className="layar">
                   <div className="container">
+                    <div className="bagian">
+                          <h2>Status Backend: {backendStatus}</h2></div>
                     <div className="bagian">
                       <h1>hy, nama saya arya</h1>
                       <p>first time menggunakan react & vite</p>
